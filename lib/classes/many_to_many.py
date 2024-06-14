@@ -12,12 +12,20 @@ class Band:
     def name(self):
         return self._name
 
+    #Consider using if to test for string separately and whether it is empty separately
     @name.setter
     def name(self, value: str):
-        if isinstance(value, str) and len(value) > 0:
-            self._name = value
+        if isinstance(value, str):
+            if len(value) > 0:
+                self._name = value
+            else:
+                raise ValueError("Name must be a non-empty string")
         else:
-            raise ValueError("Name must be a non-empty string")
+            raise TypeError("Name must be of type string")
+        #  if isinstance(value, str) and len(value) > 0:
+        #      self._name = value
+        #  else:
+        #     raise ValueError("Name must be a non-empty string")
 
     @property
     def hometown(self):
@@ -104,4 +112,5 @@ class Venue:
     # def concert_on(self, date: str):
     #     for concert in self._concerts:
     #         if concert.date == date:
-    #            
+               
+ 
